@@ -559,7 +559,7 @@ const VerificationPage = () => {
   const db = batchData?.currentDetails || {};
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center p-4 bg-gradient-to-br from-bark-700 via-bark-800 to-brand-900 relative overflow-hidden">
+    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center p-4 bg-gradient-to-br from-cream-100 via-cream-50 to-brand-50/40 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-bark-600/20 rounded-full blur-3xl"></div>

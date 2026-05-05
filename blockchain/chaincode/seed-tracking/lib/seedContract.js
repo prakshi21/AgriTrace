@@ -22,7 +22,7 @@ class SeedContract extends Contract {
             status: 'Created',
             history: [{
                 action: 'CreateBatch',
-                timestamp: new Date().toISOString(),
+                timestamp: ctx.stub.getDateTimestamp().toISOString(),
                 actorId: producerId,
                 actorName: ownerName
             }]
@@ -39,7 +39,7 @@ class SeedContract extends Contract {
         batch.labId = labId;
         batch.history.push({
             action: 'SendToLab',
-            timestamp: new Date().toISOString(),
+            timestamp: ctx.stub.getDateTimestamp().toISOString(),
             actorId,
             actorName,
             details: `Sent to Lab ID ${labId}`
@@ -55,7 +55,7 @@ class SeedContract extends Contract {
         batch.owner = actorName;
         batch.history.push({
             action: 'ReceiveAtLab',
-            timestamp: new Date().toISOString(),
+            timestamp: ctx.stub.getDateTimestamp().toISOString(),
             actorId,
             actorName
         });
@@ -71,7 +71,7 @@ class SeedContract extends Contract {
         batch.pdfHash = pdfHash;
         batch.history.push({
             action: 'CertifyBatch',
-            timestamp: new Date().toISOString(),
+            timestamp: ctx.stub.getDateTimestamp().toISOString(),
             actorId,
             actorName,
             details: `Grade: ${qualityGrade}, Hash: ${pdfHash}`
@@ -88,7 +88,7 @@ class SeedContract extends Contract {
         batch.pdfHash = pdfHash;
         batch.history.push({
             action: 'RejectBatch',
-            timestamp: new Date().toISOString(),
+            timestamp: ctx.stub.getDateTimestamp().toISOString(),
             actorId,
             actorName,
             details: `Rejected with Grade: ${qualityGrade}`
@@ -104,7 +104,7 @@ class SeedContract extends Contract {
         batch.transporterId = transporterId;
         batch.history.push({
             action: 'DispatchToTransport',
-            timestamp: new Date().toISOString(),
+            timestamp: ctx.stub.getDateTimestamp().toISOString(),
             actorId,
             actorName,
             details: `Dispatched to Transporter ID ${transporterId}`
@@ -119,7 +119,7 @@ class SeedContract extends Contract {
         batch.location = location;
         batch.history.push({
             action: 'UpdateLocation',
-            timestamp: new Date().toISOString(),
+            timestamp: ctx.stub.getDateTimestamp().toISOString(),
             actorId,
             actorName,
             details: `Location updated to: ${location}`
@@ -134,10 +134,10 @@ class SeedContract extends Contract {
         batch.status = 'With Warehouse';
         batch.warehouseId = actorId;
         batch.owner = actorName;
-        batch.dateOfDelivery = new Date().toISOString().split('T')[0];
+        batch.dateOfDelivery = ctx.stub.getDateTimestamp().toISOString().split('T')[0];
         batch.history.push({
             action: 'ReceiveAtWarehouse',
-            timestamp: new Date().toISOString(),
+            timestamp: ctx.stub.getDateTimestamp().toISOString(),
             actorId,
             actorName
         });
@@ -151,7 +151,7 @@ class SeedContract extends Contract {
         batch.status = 'Sold to Farmer';
         batch.history.push({
             action: 'MarkSold',
-            timestamp: new Date().toISOString(),
+            timestamp: ctx.stub.getDateTimestamp().toISOString(),
             actorId,
             actorName
         });
@@ -165,7 +165,7 @@ class SeedContract extends Contract {
         batch.status = 'Expired';
         batch.history.push({
             action: 'MarkExpired',
-            timestamp: new Date().toISOString(),
+            timestamp: ctx.stub.getDateTimestamp().toISOString(),
             actorId,
             actorName
         });
