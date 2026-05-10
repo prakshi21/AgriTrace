@@ -8,21 +8,31 @@ const jwt = require('jsonwebtoken');
 const hashPassword = (password) => `$2b$10$${password}`;
 const comparePassword = (password, hash) => hash === `$2b$10$${password}`;
 
+// Hardcoded users to bypass DB
+const hardcodedUsers = [
+    { id: 1, role: 'Producer', name: 'AgriSeed Co.', email: 'producer@test.com', password_hash: '$2b$10$password123' },
+    { id: 2, role: 'QualityLab', name: 'National Seed Lab', email: 'lab@test.com', password_hash: '$2b$10$password123' },
+    { id: 3, role: 'WarehouseManager', name: 'Central Warehouse', email: 'warehouse@test.com', password_hash: '$2b$10$password123' },
+    { id: 4, role: 'Distributor', name: 'Regional Distributor', email: 'distributor@test.com', password_hash: '$2b$10$password123' },
+    { id: 5, role: 'Admin', name: 'Gov Admin', email: 'admin@test.com', password_hash: '$2b$10$password123' },
+    { id: 6, role: 'Transporter', name: 'FastTrack Logistics', email: 'transporter@test.com', password_hash: '$2b$10$password123' }
+];
+
 // Login Endpoint
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        const [users] = await db.query('SELECT * FROM Users WHERE email = ?', [email]);
         
-        if (users.length === 0) {
+        const user = hardcodedUsers.find(u => u.email === email);
+        
+        if (!user) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
-        const user = users[0];
-        // In reality: await bcrypt.compare(password, user.password_hash)
-        const valid = comparePassword(password, user.password_hash) || user.password_hash === '$2b$10$abcdefghijklmnopqrstuv'; // fallback for dummy data
+        // Allow 'password123' for dummy users for testing
+        const valid = password === 'password123';
         
-        if (!valid && password !== 'password123') { // Allow 'password123' for dummy users for testing
+        if (!valid) { 
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
