@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,7 +28,7 @@
 @layer components {
   /* ─── Cards ─── */
   .glass-card {
-    @apply bg-white border border-earth-200/60 shadow-sm rounded-2xl;
+    @apply bg-white border border-earth-200/60 shadow-sm rounded-3xl;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
   .glass-card:hover {
@@ -35,39 +37,34 @@
 
   /* Warm accent card variant */
   .card-warm {
-    @apply bg-cream-50 border border-brand-200/40 rounded-2xl shadow-sm;
+    @apply bg-cream-50 border border-brand-200/40 rounded-3xl shadow-sm;
   }
 
   /* ─── Inputs ─── */
   .input-field {
-    @apply w-full px-4 py-3 rounded-xl border border-earth-200
-           focus:ring-2 focus:ring-brand-300 focus:border-brand-400
+    @apply w-full px-5 py-3.5 rounded-xl border border-earth-200
+           focus:ring-4 focus:ring-brand-500/10 focus:border-brand-500
            outline-none transition-all duration-200
-           bg-white text-bark-800 placeholder:text-earth-400;
+           bg-white text-bark-800 placeholder:text-earth-400 font-medium;
   }
 
   .input-label {
-    @apply block text-xs font-semibold uppercase tracking-wider text-earth-500 mb-1.5;
+    @apply block text-xs font-bold uppercase tracking-widest text-earth-500 mb-2;
   }
 
   /* ─── Buttons ─── */
   .btn-primary {
-    @apply px-6 py-3 bg-brand-600 text-white rounded-xl font-semibold
-           shadow-md shadow-brand-600/20
-           hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/30
-           hover:-translate-y-0.5
-           active:translate-y-0 active:shadow-md
-           transition-all duration-200
-           flex items-center justify-center gap-2;
+    @apply px-6 py-3 bg-brand-600 text-white rounded-xl font-bold
+           shadow-md shadow-brand-600/20 hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/30
+           hover:-translate-y-0.5 active:translate-y-0 active:shadow-md
+           transition-all duration-200 flex items-center justify-center gap-2;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 bg-white text-bark-700 rounded-xl font-medium
-           shadow-sm border border-earth-200
-           hover:bg-cream-50 hover:border-earth-300
-           hover:-translate-y-0.5
-           active:translate-y-0
-           transition-all duration-200;
+    @apply px-6 py-3 bg-white text-bark-700 rounded-xl font-bold
+           shadow-sm border border-earth-200 hover:bg-cream-50 hover:border-earth-300
+           hover:-translate-y-0.5 active:translate-y-0 hover:text-bark-900
+           transition-all duration-200 flex items-center justify-center gap-2;
   }
 
   .btn-ghost {
@@ -78,33 +75,21 @@
 
   /* ─── Status Badges ─── */
   .badge {
-    @apply px-3 py-1 rounded-full text-xs font-semibold tracking-wide inline-flex items-center gap-1.5;
-  }
-
-  /* ─── Table ─── */
-  .table-header {
-    @apply bg-cream-50 border-b border-earth-200 text-xs font-semibold uppercase tracking-wider text-earth-500;
-  }
-  .table-row {
-    @apply border-b border-earth-100 hover:bg-cream-50/60 transition-colors duration-150;
-  }
-
-  /* ─── Network Status ─── */
-  .status-indicator {
-    @apply w-2.5 h-2.5 rounded-full bg-brand-500 animate-pulse-soft;
+    @apply px-3 py-1 rounded-full text-xs font-bold tracking-wide inline-flex items-center gap-1.5 shadow-sm;
   }
 }
 
 @layer utilities {
   /* ─── Animations ─── */
-  .animate-stagger-1 { animation-delay: 0.05s; }
-  .animate-stagger-2 { animation-delay: 0.1s; }
-  .animate-stagger-3 { animation-delay: 0.15s; }
-  .animate-stagger-4 { animation-delay: 0.2s; }
+  .animate-stagger-1 { animation-delay: 0.1s; }
+  .animate-stagger-2 { animation-delay: 0.2s; }
+  .animate-stagger-3 { animation-delay: 0.3s; }
+  .animate-stagger-4 { animation-delay: 0.4s; }
 
   /* ─── Scrollbar ─── */
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
     @apply bg-transparent;
@@ -114,10 +99,5 @@
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-earth-400;
-  }
-
-  /* ─── Focus Ring ─── */
-  .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-brand-300 focus:ring-offset-2 focus:ring-offset-cream-100;
   }
 }
